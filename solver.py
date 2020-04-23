@@ -3,19 +3,6 @@ class Grid():
     def __init__(self, grid):
         self.grid = grid
 
-    def print_grid(self):
-        print("-"*27, "|")
-        for row in self.grid:
-            for num in range(len(row)):
-                if (num+1) % 3 == 0:
-                    print(row[num], end=" | ")
-                else:
-                    print(row[num], end="  ")
-            if (self.grid.index(row) + 1) % 3 == 0:
-                print("\n", "-"*26, "|")
-            else:
-                print("\n", " "*6, "|", " "*7, "|", " "*7, "|")
-
     def find_empty(self):
         for row in range(len(self.grid)):
             for col in range(len(self.grid[0])):
