@@ -24,8 +24,9 @@ def draw(unsolved_draw):
         for column in range(len(unsolved_draw[row])):
             color = WHITE
             rect = pygame.draw.rect(screen, color, [(MARGIN + WIDTH) * column + MARGIN, (MARGIN + HEIGHT) * row + MARGIN, WIDTH, HEIGHT])
-            text = font.render(str(unsolved_draw[row][column]), True, BLACK, WHITE)
-            screen.blit(text, rect)
+            if unsolved_draw[row][column] != 0:
+                text = font.render(str(unsolved_draw[row][column]), True, BLACK, WHITE)
+                screen.blit(text, rect)
 
 while True:
     
