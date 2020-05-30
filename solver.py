@@ -1,3 +1,4 @@
+import copy
 
 class Grid():
 
@@ -34,11 +35,11 @@ class Grid():
         return True
 
 
-    def solve(self):
+    def solve(self, states=[]):
         # solve the sudoku
         empty = self.find_empty()
         if not empty:
-            return True # You won !
+            return True, states # You won !
 
         else:
             row, col = empty
@@ -47,12 +48,14 @@ class Grid():
             if self.validate(num, row, col):
                 self.grid[row][col] = num
 
-                if self.solve():
-                    return True
+                if self.solve(states=states)[0]:
+                    states.append(copy.deepcopy(self.grid))
+
+                    return True, states
 
                 self.grid[row][col] = 0
-
-        return False
+        states.append(copy.deepcopy(self.grid))
+        return False, None
 
 
 unsolved = [
